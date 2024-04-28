@@ -18,19 +18,17 @@ You may want to use this tool by keyboard shortcut, for me at Windows 11 system 
 
 ```
 #Requires AutoHotkey v2.0
+
+; blow here is ctrl+j to run `ask4me client2-ui-fix`
 ^j::
 {
     ppressed := KeyWait("c", "DT0.2")
-    if (ppressed = 0) ; c 键在 0.5 秒内被按下
+    if (ppressed = 0) ; "c" pressed in 0.2 seconds
     {
-        Run A_ComSpec " /c ask4me pyqt5-ui-fix"
-        ; if (p = 0) ; 运行失败
-        ; {
-            ; MsgBox(0, "Error", "Failed to run ask4me.py")
-        ; }
+        Run A_ComSpec " /c ask4me client2-ui-fix" ; change this line to fit your need
     }
 }
-Return
+
 ```
 
 Save as shutcut-ask4me.ahk and run it with ahk, pres Ctrl + j + c will trigger the prompt genration. Then you can paste to anywhere you want.
