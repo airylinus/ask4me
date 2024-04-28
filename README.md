@@ -17,16 +17,20 @@ ask4me pyqt5-ui-fix
 You may want to use this tool by keyboard shortcut, for me at Windows 11 system I use AHK (AutoHotkey) for convenience. Here's the code:
 
 ```
-^c::
-If GetKeyState("j", "P")  ; 
+#Requires AutoHotkey v2.0
+^j::
 {
-    Run cmd.exe /c ask4me pyqt5-ui-fix,, Hide  ; 
-}
-else
-{
-    Send, ^c  ;
+    ppressed := KeyWait("c", "DT0.2")
+    if (ppressed = 0) ; c 键在 0.5 秒内被按下
+    {
+        Run A_ComSpec " /c ask4me pyqt5-ui-fix"
+        ; if (p = 0) ; 运行失败
+        ; {
+            ; MsgBox(0, "Error", "Failed to run ask4me.py")
+        ; }
+    }
 }
 Return
 ```
 
-Save as shutcut-ask4me.ahk and run it with ahk
+Save as shutcut-ask4me.ahk and run it with ahk, pres Ctrl + j + c will trigger the prompt genration. Then you can paste to anywhere you want.
